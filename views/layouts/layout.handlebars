@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+    <title>{{pagina}}</title>
+</head>
+<body>
+    <div class="nombre-sitio contenedor">
+        <h3>
+            <a href="/">DevJobs</a>
+        </h3>
+        {{#if barra}}
+            <div class="buscador">
+                <form>
+                    <input type="text" name="search" class="buscar" placeholder="Buscar un término">
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+        {{/if}}
+    </div>
+
+    <header class="site-header contenedor separador">
+        <h2>{{pagina}}</h2>
+
+        {{#if tagLine}}
+            <p class="tagline">{{tagLine}}</p>
+        {{/if}}
+
+        {{#if boton}}
+            <a href="/vacantes" class="btn btn-azul">Públicar Nueva Vacante</a>
+        {{/if}}
+    </header>
+
+    <div class="contenido-principal contenedor">
+        {{{body}}}
+    </div>
+</body>
+</html>
