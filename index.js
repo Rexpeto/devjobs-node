@@ -1,6 +1,8 @@
+import mongoose from "mongoose";
 import express from "express";
 import exphbs from 'express-handlebars';
 import dotenv from 'dotenv';
+import { db } from "./config/db.js";
 import router from "./routes/index.js";
 
 const app = express();
