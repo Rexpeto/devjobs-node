@@ -18,5 +18,7 @@ app.use(express.static('public'));
 
 app.use('/', router)
 
-app.listen(4000);
+const port = process.env.PORT || 3000;
+
+app.listen(port);
 console.log('Funcionando por el puerto 4000')
