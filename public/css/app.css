@@ -52,7 +52,6 @@ h3 {
 }
 .btn-verde {
     border: 1px solid #00C897;
-    
 }
 .btn-verde:hover {
     background-color: rgb(10, 155, 119);
@@ -60,6 +59,7 @@ h3 {
 
 .btn-azul {
     border: 1px solid #005eb6;
+    background-color: transparent;
 }
 .btn-azul:hover {
     background-color: #005eb6;
