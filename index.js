@@ -7,6 +7,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import { db } from "./config/db.js";
 import router from "./routes/index.js";
+import { skills } from "./helpers/handlebars.js";
 
 const app = express();
 
@@ -16,7 +17,8 @@ dotenv.config({path: '.env'});
 //? Habilidar hadlebars como view
 app.engine('handlebars', 
     exphbs.engine({
-        defaultLayout: 'layout'
+        defaultLayout: 'layout',
+        helpers: skills
     })
 )
 
