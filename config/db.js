@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 
-//? Modelos
-import Vacantes from "../models/Vacantes.js";
+//? Configuración de dotenv
+dotenv.config({path: '.env'});
 
-export const db =  () => {
-    mongoose.connect(process.env.DATABASES, {userNewUrlParser: true});
-    mongoose.connection.on('error', error => console.log(error));
+try {
+    await mongoose.connect(process.env.DATABASES);
+    console.log('conexión exitosa');
+} catch (error) {
+    console.log(`Error en la conexión ${error}`)
 }
