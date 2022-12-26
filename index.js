@@ -4,8 +4,9 @@ import exphbs from 'express-handlebars';
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
 import session from 'express-session';
+import bodyParser from "body-parser";
 import MongoStore from 'connect-mongo';
-import { db } from "./config/db.js";
+import './config/db.js';
 import router from "./routes/index.js";
 import { skills } from "./helpers/handlebars.js";
 
@@ -20,7 +21,11 @@ app.engine('handlebars',
         defaultLayout: 'layout',
         helpers: skills
     })
-)
+);
+
+//? Habilitar body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'handlebars');
 
@@ -39,6 +44,7 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({mongoUrl: process.env.DATABASES})
 }))
+
 
 //? rutas
 app.use('/', router)
