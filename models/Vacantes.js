@@ -1,10 +1,8 @@
-import mongoose, { mongo } from "mongoose";
+import {Schema, model} from "mongoose";
 import slug from "slug";
 import shortid from "shortid";
 
-const {Schema} = mongoose;
-
-const vacantesSchema = Schema({
+const vacantesSchema = new Schema({
     titulo: {
         type: String,
         required: 'El nombre de la vacante es obligatorio',
@@ -52,6 +50,4 @@ vacantesSchema.pre('save', function (next) {
     next();
 });
 
-const Vacantes = mongoose.model('vacantes', vacantesSchema);
-
-export default Vacantes;
+export const Vacantes = model('vacantes', vacantesSchema);
