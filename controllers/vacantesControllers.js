@@ -63,3 +63,18 @@ export const editarVacante = async (req, res) => {
         vacante
     })
 }
+
+//? Guardar edición
+export const guardarEditVacante = async (req, res) => {
+    const {url} = req.params;
+    const vacanteActulizado = req.body;
+
+    vacanteActulizado.skills = req.body.skills.split(',');
+
+    const vacante = await Vacantes.findOneAndUpdate({url}, vacanteActulizado, {
+        new: true,
+        runValidators: true
+    });
+
+    res.redirect(`/vacantes/${url}`);
+}
