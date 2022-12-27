@@ -46,3 +46,20 @@ export const mostrarVacante = async (req, res) => {
         vacante
     })
 }
+
+//? Editar las vacantes
+export const editarVacante = async (req, res) => {
+    const {url} = req.params;
+
+    const vacante = await Vacantes.findOne({url}).lean();
+
+    if(!vacante) return res.redirect('/');
+
+    res.render('editar-vacante', {
+        pagina: `Editar la vacante ${vacante.titulo}`,
+        tagLine: `La vacante es de la empresa ${vacante.empresa}`,
+        barra: true,
+        trix: true,
+        vacante
+    })
+}

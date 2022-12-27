@@ -6,7 +6,7 @@ export const skills = {
 
         conocimientos.forEach(skill => {
             html += `
-                <li>${skill}</li>
+                <li ${seleccinadas.includes(skill) ? 'class="activo"' : ''}>${skill}</li>
             `;
         });
 
