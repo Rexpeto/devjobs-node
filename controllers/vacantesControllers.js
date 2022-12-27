@@ -29,3 +29,20 @@ export const crearVacante = async (req, res) => {
         console.log(error);
     }
 }
+
+//? Mostrar un vacante
+export const mostrarVacante = async (req, res) => {
+    const {url} = req.params;
+
+    const vacante = await Vacantes.findOne({url}).lean();
+
+    //* Si no hay vacantes
+    if(!vacante) return res.redirect('/');
+
+    res.render('mostrar-vacante', {
+        pagina: `Vacante de ${vacante.titulo}`,
+        tagLine: `La empresa ${vacante.empresa} solicita developer en ${vacante.titulo}`,
+        barra: true,
+        vacante
+    })
+}
