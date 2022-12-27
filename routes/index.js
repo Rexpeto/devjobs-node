@@ -1,6 +1,6 @@
 import express from 'express';
 import { mostrarTrabajos } from '../controllers/homeControllers.js';
-import { crearVacante, editarVacante, formVacantes, mostrarVacante } from '../controllers/vacantesControllers.js';
+import { crearVacante, editarVacante, formVacantes, guardarEditVacante, mostrarVacante } from '../controllers/vacantesControllers.js';
 const router = express.Router();
 
 router.get('/', mostrarTrabajos);
@@ -14,5 +14,6 @@ router.get('/vacantes/:url', mostrarVacante);
 
 //? Editar vacante
 router.get('/vacantes/edit/:url', editarVacante);
+router.post('/vacantes/edit/:url', guardarEditVacante);
 
 export default router;
