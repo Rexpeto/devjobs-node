@@ -52,3 +52,11 @@ export const storageRegister = async (req, res) => {
         res.redirect('/register');
     }
 }
+
+//? Login
+export const login = (req, res) => {
+    res.render('login', {
+        pagina: 'Iniciar Sesión',
+        tagLine: 'Inicia sesión con tu cuenta'
+    })
+}

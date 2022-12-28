@@ -1,5 +1,5 @@
 import express from 'express';
-import { register, storageRegister, validarFormulario } from '../controllers/usuarioControllers.js';
+import { login, register, storageRegister, validarFormulario } from '../controllers/usuarioControllers.js';
 import { mostrarTrabajos } from '../controllers/homeControllers.js';
 import { crearVacante, editarVacante, formVacantes, guardarEditVacante, mostrarVacante } from '../controllers/vacantesControllers.js';
 const router = express.Router();
@@ -20,5 +20,8 @@ router.post('/vacantes/edit/:url', guardarEditVacante);
 //? Register
 router.get('/register', register);
 router.post('/register', validarFormulario, storageRegister);
+
+//? Login
+router.get('/login', login);
 
 export default router;
