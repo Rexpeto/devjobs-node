@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import session from 'express-session';
 import bodyParser from "body-parser";
 import MongoStore from 'connect-mongo';
+import flash from 'connect-flash';
 import './config/db.js';
 import router from "./routes/index.js";
 import { skills } from "./helpers/handlebars.js";
@@ -43,8 +44,16 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({mongoUrl: process.env.DATABASES})
-}))
+}));
 
+//? Alertas y flash messages
+app.use(flash());
+
+//? Crear middleware
+app.use((req, res, next) => {
+    res.locals.mensajes = req.flash();
+    next();
+});
 
 //? rutas
 app.use('/', router)

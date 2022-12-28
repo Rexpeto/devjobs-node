@@ -17,5 +17,23 @@ export const skills = {
         return opciones.fn(this).replace(
             new RegExp(`value="${seleccionado}"`), '$& selected'
         )
+    },
+
+    mostrarAlertas: (errores = {}, alertas) => {
+        const categoria = Object.keys(errores);
+
+        let html = '';
+
+        if(categoria.length) {
+            errores[categoria].forEach(mensaje => {
+                html += `
+                    <div class="alerta ${categoria}">
+                        ${mensaje}
+                    </div>
+                `
+            })
+        }
+
+        return html;
     }
 }
