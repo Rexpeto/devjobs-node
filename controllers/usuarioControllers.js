@@ -47,5 +47,5 @@ export const storageRegister = async (req, res) => {
 
     if(!nuevoUsuario) return res.redirect('/');
 
-    res.redirect('/iniciar-sesion');
+    res.redirect('/login');
 }
