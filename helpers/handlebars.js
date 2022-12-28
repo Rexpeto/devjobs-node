@@ -11,5 +11,11 @@ export const skills = {
         });
 
         return html;
+    },
+
+    tipoContrato: (seleccionado, opciones) => {
+        return opciones.fn(this).replace(
+            new RegExp(`value="${seleccionado}"`), '$& selected'
+        )
     }
 }
