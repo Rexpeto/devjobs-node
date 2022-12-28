@@ -1,3 +1,4 @@
+import flash from 'connect-flash';
 import { Usuarios } from "../models/Usuarios.js";
 import {check, validationResult} from 'express-validator';
 
@@ -43,9 +44,11 @@ export const storageRegister = async (req, res) => {
     //* Crear el usuario
     const usuario = new Usuarios(req.body);
 
-    const nuevoUsuario = await usuario.save();
-
-    if(!nuevoUsuario) return res.redirect('/');
-
-    res.redirect('/login');
+    try {
+        await usuario.save();
+        res.redirect('/login');    
+    } catch (error) {
+        req.flash('error', error);
+        res.redirect('/register');
+    }
 }
